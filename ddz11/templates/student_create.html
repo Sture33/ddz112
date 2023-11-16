@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'student_form.css'%}">
+    <title>Student Create</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container container">
+                    <div class="title">Student Create</div>
+        <a href="{%url 'student_list'%}" >Home</a>
+        </div>
+    </header>
+
+    <form method="POST">
+        {%csrf_token%}
+        <input type="text" name="name">
+        <input type="text" name="surname">
+        <input type="number" name="age">
+        <input type="text" name="course">
+        <select name="music_instrument">
+            {% for instrument in instruments %}
+            <option value="{{instrument.0}}">{{instrument.1}}</option>
+            {% endfor %}
+        </select>
+        <select name="grade">
+            {% for grade in grades %}
+            <option value="{{grade.0}}">{{grade.1}}</option>
+            {% endfor %}
+        </select>
+        <input type="checkbox" name="paid" value="True"/>
+        <input type="submit" value="create">
+    </form>
+</body>
+</html>

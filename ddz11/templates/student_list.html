@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="{%static 'student_list.css'%}">
+
+</head>
+<body>
+    <header class="header">
+        <div class="header__container container">
+                    <div class="title">Student List</div>
+        <a href="{%url 'student_create'%}" >Create</a>
+        </div>
+    </header>
+    <div  class="stl_block">
+        <div class="stl_block__container container">
+            {% for student in student_list %}
+            <div class="student">
+                <p>{{student}}</p>
+                <a href="{% url 'student_update' student.pk %}">Update</a>
+                <a href="{%url 'student_detail' student.pk%}">Detail</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

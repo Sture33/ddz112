@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'student_detail.css'%}">
+    <title>Student Detail</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container container">
+                    <div class="title">Student Detail</div>
+        <a href="{%url 'student_list'%}" >Home</a>
+        </div>
+    </header>
+    <div style="color:white; width: 100%;display: flex;justify-content: center  ; grid-gap: 10px">
+        <p>{{student.name}}</p>
+        <p>{{student.surname}}</p>
+        <p>{{student.age}}</p>
+        <p>{{student.curse}}</p>
+        <p>{{student.music_instrument}}</p>
+        <p>{{student.grade}}</p>
+        <p>{{student.paid}}</p>
+    </div>
+</body>
+</html>

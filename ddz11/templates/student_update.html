@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'student_form.css'%}">
+    <title>Student Update</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container container">
+                    <div class="title">Student Update</div>
+        <a href="{%url 'student_list'%}" >Home</a>
+        </div>
+    </header>
+    <form method="POST" style="margin: 0 auto;width: 400px; display: flex;justify-content: center; flex-direction: column">
+        {%csrf_token%}
+        <input type="text" name="name" value="{{student.name}}" class="adf" style="height: 30px;">
+        <input type="text" name="surname" value="{{student.surname}}" class="adf">
+        <input type="number" name="age" value="{{student.age}}" class="adf">
+        <input type="text" name="course" value="{{student.course}}" class="adf">
+        <select name="music_instrument" class="adf">
+            {% for instrument in instruments %}
+            <option value="{{instrument.0}}" {% if student.music_instrument == instrument.0 %}selected{% endif %} >{{instrument.1}}</option>
+            {% endfor %}
+        </select>
+        <select name="grade" value="{{student.name}}" class="adf">
+            {% for grade in grades %}
+            <option value="{{grade.0}}" {% if student.grade == grade.0 %}selected{% endif %}>{{grade.1}}</option>
+            {% endfor %}
+        </select>
+        <input type="checkbox" name="paid" value="True" {% if student.paid %}checked{% endif %} class="adf" />
+        <input type="submit" value="update" class="adf"style="max-width: 80px;">
+    </form>
+</body>
+</html>
